@@ -19,6 +19,7 @@ export default function Contacts({ search, newContact }) {
                     });
                     contacts = await contacts.json();
                     sessionStorage.setItem("contacts", JSON.stringify(contacts));
+                    setContacts(contacts);
                 } catch (error) {
                     console.log(error);
                 }
