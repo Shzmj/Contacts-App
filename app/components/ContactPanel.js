@@ -1,4 +1,6 @@
-export default function ContactPanel({ contact }) {
+import ContactDeets from "./ContactDeets";
+
+export default function ContactPanel({ contact, handleDeleteContact, handleEditContact }) {
     return (
         <>
             <tr className="hover">
@@ -24,7 +26,7 @@ export default function ContactPanel({ contact }) {
                     {contact.email}
                 </td>
                 <th>
-                    <button className="btn btn-ghost btn-xs">Details</button>
+                    <ContactDeets contact={contact} handleDeleteContact={handleDeleteContact} handleEditContact={handleEditContact} />
                 </th>
             </tr>
         </>

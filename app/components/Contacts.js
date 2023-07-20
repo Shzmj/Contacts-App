@@ -34,6 +34,14 @@ export default function Contacts({ search, newContact }) {
         }
     }, [newContact]);
 
+    const handleDeleteContact = (id) => {
+        setContacts(prevContacts => prevContacts.filter(contact => contact.id !== id));
+    }
+
+    const handleEditContact = (updatedContact) => {
+        setContacts(prevContacts => prevContacts.map(contact => contact.id === updatedContact.id ? updatedContact : contact));
+    }
+
     useEffect(() => {
         if (contacts.length > 0 && search.length === 0) {
             sessionStorage.setItem("contacts", JSON.stringify(contacts));
@@ -43,7 +51,7 @@ export default function Contacts({ search, newContact }) {
             return contact.name.toLowerCase().includes(search.toLowerCase()) ||
                 contact.company.name.toLowerCase().includes(search.toLowerCase())
         }).map((contact) => (
-            <ContactPanel key={contact.id} contact={contact} />
+            <ContactPanel key={contact.id} contact={contact} handleDeleteContact={handleDeleteContact} handleEditContact={handleEditContact} />
         ));
         setDisplayContacts(display);
     }, [contacts, search]);
