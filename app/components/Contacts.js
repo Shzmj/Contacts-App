@@ -4,22 +4,21 @@ import ContactPanel from './ContactPanel';
 export default function Contacts({ search }) {
     const [contacts, setContacts] = useState([]);
 
-    const getContacts = async () => {
-        try {
-            let contacts = await fetch('https://jsonplaceholder.typicode.com/users', {
-                method: 'GET',
-                redirect: 'follow',
-            });
-            contacts = await contacts.json();
-            setContacts(contacts.filter((contact) => { return contact.name.toLowerCase().includes(search.toLowerCase()) }));
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     useEffect(() => {
+        const getContacts = async () => {
+            try {
+                let contacts = await fetch('https://jsonplaceholder.typicode.com/users', {
+                    method: 'GET',
+                    redirect: 'follow',
+                });
+                contacts = await contacts.json();
+                setContacts(contacts.filter((contact) => { return contact.name.toLowerCase().includes(search.toLowerCase()) }));
+            } catch (error) {
+                console.log(error);
+            }
+        }
         getContacts();
-    }, [search, getContacts])
+    }, [search])
 
     return (
         <>
@@ -35,7 +34,7 @@ export default function Contacts({ search }) {
                     </thead>
                     <tbody>
                         {contacts.map((contact) => (
-                            <ContactPanel contact={contact} />
+                            <ContactPanel key={contact.id} contact={contact} />
                         ))}
                     </tbody>
                 </table>
