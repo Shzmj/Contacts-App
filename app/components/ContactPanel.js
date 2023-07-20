@@ -2,7 +2,6 @@ export default function ContactPanel({ contact }) {
     return (
         <>
             <tr className="hover">
-                <th>{contact.id}</th>
                 <td>
                     <div className="flex items-center space-x-3">
                         <div className="avatar">

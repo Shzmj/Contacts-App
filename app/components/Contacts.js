@@ -1,29 +1,55 @@
 import React, { useEffect, useState } from "react";
 import ContactPanel from './ContactPanel';
 
-export default function Contacts({ search, newContacts }) {
+export default function Contacts({ search, newContact }) {
     const [contacts, setContacts] = useState([]);
+    const [displayContacts, setDisplayContacts] = useState([]);
 
     useEffect(() => {
-        const getContacts = async () => {
-            try {
-                let contacts = await fetch('https://jsonplaceholder.typicode.com/users', {
-                    method: 'GET',
-                    redirect: 'follow',
-                });
-                contacts = await contacts.json();
-                console.log(newContacts)
-                contacts.push(...newContacts);
-                setContacts(contacts.filter((contact) => {
-                    return contact.name.toLowerCase().includes(search.toLowerCase()) ||
-                        contact.company.name.toLowerCase().includes(search.toLowerCase())
-                }));
-            } catch (error) {
-                console.log(error);
+        const storedContacts = sessionStorage.getItem("contacts");
+        if (storedContacts && storedContacts.length > 0) {
+            setContacts(JSON.parse(storedContacts));
+        } else {
+            // Fetch contacts from API and store in session storage
+            const getContacts = async () => {
+                try {
+                    let contacts = await fetch('https://jsonplaceholder.typicode.com/users', {
+                        method: 'GET',
+                        redirect: 'follow',
+                    });
+                    contacts = await contacts.json();
+                    sessionStorage.setItem("contacts", JSON.stringify(contacts));
+                    setContacts(contacts.filter((contact) => {
+                        return contact.name.toLowerCase().includes(search.toLowerCase()) ||
+                            contact.company.name.toLowerCase().includes(search.toLowerCase())
+                    }));
+                } catch (error) {
+                    console.log(error);
+                }
             }
+            getContacts();
         }
-        getContacts();
-    }, [search, newContacts])
+    }, [search])
+    useEffect(() => {
+        if (newContact) {
+            setContacts(prevContacts => [...prevContacts, newContact]);
+        }
+    }, [newContact]);
+
+    useEffect(() => {
+        if (contacts.length > 0) {
+            sessionStorage.setItem("contacts", JSON.stringify(contacts));
+        }
+    }, [contacts]);
+
+    useEffect(() => {
+        setContacts(prevContacts => prevContacts.sort((a, b) => a.name.localeCompare(b.name)));
+        const display = contacts.map((contact) => (
+            <ContactPanel key={contact.id} contact={contact} />
+        ));
+        setDisplayContacts(display);
+    }, [contacts]);
+
 
     return (
         <>
@@ -38,9 +64,7 @@ export default function Contacts({ search, newContacts }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {contacts.map((contact, index) => (
-                            <ContactPanel key={index} contact={contact} />
-                        ))}
+                        {displayContacts}
                     </tbody>
                 </table>
             </div>

@@ -7,6 +7,7 @@ export default function AddContact({ onAddContact }) {
     const [company, setCompany] = useState("");
     const [city, setCity] = useState("");
     const [street, setStreet] = useState("");
+    const [catchPhrase, setCatchPhrase] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -16,7 +17,10 @@ export default function AddContact({ onAddContact }) {
             name,
             email,
             phone,
-            company,
+            company: {
+                name: company,
+                catchPhrase: catchPhrase
+            },
             address: {
                 city,
                 street,
@@ -30,6 +34,12 @@ export default function AddContact({ onAddContact }) {
         setCompany("");
         setCity("");
         setStreet("");
+        setCatchPhrase("");
+
+        const modalCheckbox = document.getElementById("my_modal_7");
+        if (modalCheckbox) {
+            modalCheckbox.checked = false;
+        }
     };
 
     return (
@@ -37,86 +47,104 @@ export default function AddContact({ onAddContact }) {
             <input type="checkbox" id="my_modal_7" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box">
-                    <h3 className="text-lg font-bold">New Contact</h3>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-control">
-                            <label className="label">
-                                Name:
-                                <input
-                                    type="text"
-                                    className="input input-primary input-bordered"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
-                            </label>
+                    <h3 className="text-lg font-bold text-center mb-4">Create new contact:</h3>
+                    <form method="dialog" onSubmit={handleSubmit}>
+                        <div className="form-grid">
+                            <div className="form-control">
+                                <label className="label">
+                                    Name:
+                                    <input
+                                        type="text"
+                                        className="input input-primary input-bordered"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    Email:
+                                    <input
+                                        type="email"
+                                        className="input input-primary input-bordered"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    Phone:
+                                    <input
+                                        type="text"
+                                        className="input input-primary input-bordered"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    Company:
+                                    <input
+                                        type="text"
+                                        className="input input-primary input-bordered"
+                                        value={company}
+                                        onChange={(e) => setCompany(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    Catch Phrase:
+                                    <input
+                                        type="text"
+                                        className="input input-primary input-bordered"
+                                        value={catchPhrase}
+                                        onChange={(e) => setCatchPhrase(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    City:
+                                    <input
+                                        type="text"
+                                        className="input input-primary input-bordered"
+                                        value={city}
+                                        onChange={(e) => setCity(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    Street:
+                                    <input
+                                        type="text"
+                                        className="input input-primary input-bordered"
+                                        value={street}
+                                        onChange={(e) => setStreet(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                            </div>
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                Email:
-                                <input
-                                    type="email"
-                                    className="input input-primary input-bordered"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                            </label>
+                        <div className="form-control mt-4">
+                            <button type="submit" className="btn bg-primary" htmlFor="my_modal_7">
+                                Add Contact
+                            </button>
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                Phone:
-                                <input
-                                    type="text"
-                                    className="input input-primary input-bordered"
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
-                                    required
-                                />
-                            </label>
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                Company:
-                                <input
-                                    type="text"
-                                    className="input input-primary input-bordered"
-                                    value={company}
-                                    onChange={(e) => setCompany(e.target.value)}
-                                    required
-                                />
-                            </label>
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                City:
-                                <input
-                                    type="text"
-                                    className="input input-primary input-bordered"
-                                    value={company}
-                                    onChange={(e) => setCity(e.target.value)}
-                                    required
-                                />
-                            </label>
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                Street:
-                                <input
-                                    type="text"
-                                    className="input input-primary input-bordered"
-                                    value={company}
-                                    onChange={(e) => setStreet(e.target.value)}
-                                    required
-                                />
-                            </label>
-                        </div>
-                        <button type="submit" className="btn bg-primary" htmlFor="my_modal_7">
-                            Add Contact
-                        </button>
                     </form>
                 </div>
-                <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
+                <label className="modal-backdrop" htmlFor="my_modal_7">
+                    Close
+                </label>
             </div>
         </>
     );
