@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContactPanel from './ContactPanel';
 
-export default function Contacts() {
+export default function Contacts({ search }) {
     const [contacts, setContacts] = useState([]);
 
     const getContacts = async () => {
@@ -11,7 +11,7 @@ export default function Contacts() {
                 redirect: 'follow',
             });
             contacts = await contacts.json();
-            setContacts(contacts);
+            setContacts(contacts.filter((contact) => { return contact.name.toLowerCase().includes(search.toLowerCase()) }));
         } catch (error) {
             console.log(error);
         }
@@ -19,7 +19,7 @@ export default function Contacts() {
 
     useEffect(() => {
         getContacts();
-    }, [])
+    }, [search])
 
     return (
         <>
@@ -30,8 +30,7 @@ export default function Contacts() {
                             <th></th>
                             <th>Name</th>
                             <th>Company</th>
-                            <th>Favorite Color</th>
-                            <th></th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>

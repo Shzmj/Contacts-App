@@ -12,7 +12,7 @@ export default function ContactPanel({ contact }) {
                         </div>
                         <div>
                             <div className="font-bold">{contact.name}</div>
-                            <div className="text-sm opacity-50">{contact.address.city}</div>
+                            <div className="text-sm opacity-50">{contact.address.street}, {contact.address.city}</div>
                         </div>
                     </div>
                 </td>
@@ -20,6 +20,9 @@ export default function ContactPanel({ contact }) {
                     {contact.company.name}
                     <br />
                     <span className="badge badge-ghost badge-sm">{contact.company.catchPhrase}</span>
+                </td>
+                <td>
+                    {contact.email}
                 </td>
                 <th>
                     <button className="btn btn-ghost btn-xs">Details</button>
