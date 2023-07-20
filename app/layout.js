@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Contacts',
   description: 'Simple app to view user contacts',
+  image: 'https://img.icons8.com/ios-filled/50/contacts.png',
 }
 
 export default function RootLayout({ children }) {
