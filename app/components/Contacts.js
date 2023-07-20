@@ -19,17 +19,14 @@ export default function Contacts({ search, newContact }) {
                     });
                     contacts = await contacts.json();
                     sessionStorage.setItem("contacts", JSON.stringify(contacts));
-                    setContacts(contacts.filter((contact) => {
-                        return contact.name.toLowerCase().includes(search.toLowerCase()) ||
-                            contact.company.name.toLowerCase().includes(search.toLowerCase())
-                    }));
                 } catch (error) {
                     console.log(error);
                 }
             }
             getContacts();
         }
-    }, [search])
+    }, [])
+
     useEffect(() => {
         if (newContact) {
             setContacts(prevContacts => [...prevContacts, newContact]);
@@ -37,19 +34,18 @@ export default function Contacts({ search, newContact }) {
     }, [newContact]);
 
     useEffect(() => {
-        if (contacts.length > 0) {
+        if (contacts.length > 0 && search.length === 0) {
             sessionStorage.setItem("contacts", JSON.stringify(contacts));
         }
-    }, [contacts]);
-
-    useEffect(() => {
         setContacts(prevContacts => prevContacts.sort((a, b) => a.name.localeCompare(b.name)));
-        const display = contacts.map((contact) => (
+        const display = contacts.filter((contact) => {
+            return contact.name.toLowerCase().includes(search.toLowerCase()) ||
+                contact.company.name.toLowerCase().includes(search.toLowerCase())
+        }).map((contact) => (
             <ContactPanel key={contact.id} contact={contact} />
         ));
         setDisplayContacts(display);
-    }, [contacts]);
-
+    }, [contacts, search]);
 
     return (
         <>
