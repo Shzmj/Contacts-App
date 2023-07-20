@@ -139,7 +139,7 @@ export default function ContactDeets({ contact, handleDeleteContact, handleEditC
                             Delete
                         </button>
                         {detailsChanged && (
-                            <button type="button" className="btn ml-4" onClick={handleSave}>
+                            <button type="button" className="btn ml-4 btn-info text-black" onClick={handleSave}>
                                 Save new details
                             </button>
                         )}
