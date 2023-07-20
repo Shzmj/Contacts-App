@@ -7,7 +7,7 @@ export default function ContactPanel({ contact }) {
                     <div className="flex items-center space-x-3">
                         <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12">
-                                <img className="rounded-full h-10 w-10" src={`https://ui-avatars.com/api/background=0D8ABC&color=fff?name=${contact.name}`} alt="Avatar Tailwind CSS Component" />
+                                <img className="rounded-full h-10 w-10" src={`https://ui-avatars.com/api/background=0077C9&color=fff?name=${contact.name}`} alt="Avatar" />
                             </div>
                         </div>
                         <div>
