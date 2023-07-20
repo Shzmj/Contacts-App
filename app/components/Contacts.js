@@ -19,7 +19,7 @@ export default function Contacts({ search }) {
 
     useEffect(() => {
         getContacts();
-    }, [search])
+    }, [search, getContacts])
 
     return (
         <>
