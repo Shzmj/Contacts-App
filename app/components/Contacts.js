@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Navbar from './Navbar';
+import ContactPanel from './ContactPanel';
 
 export default function Contacts() {
     const [contacts, setContacts] = useState([]);
-    const [displayContacts, setDisplayContacts] = useState([]);
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    const toggleDarkMode = () => {
-        setIsDarkMode(!isDarkMode);
-    };
 
     const getContacts = async () => {
         try {
@@ -18,7 +12,6 @@ export default function Contacts() {
             });
             contacts = await contacts.json();
             setContacts(contacts);
-            console.log(contacts);
         } catch (error) {
             console.log(error);
         }
@@ -28,28 +21,26 @@ export default function Contacts() {
         getContacts();
     }, [])
 
-    useEffect(() => {
-        const display = contacts.map((contact) => {
-            return (
-                <div key={contact.id}>
-                    <img src={`https://ui-avatars.com/api/background=0D8ABC&color=fff?name=${contact.name}`} />
-                    <h1>{contact.name}</h1>
-                </div>
-            )
-        })
-        setDisplayContacts(display)
-    }, [contacts])
-
     return (
         <>
-            <Navbar />
-            <h1 className='text-center underline'>helo</h1>
-            <div className="flex flex-col">
-                <div>{displayContacts}</div>
+            <div className="overflow-x-auto">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Company</th>
+                            <th>Favorite Color</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {contacts.map((contact) => (
+                            <ContactPanel contact={contact} />
+                        ))}
+                    </tbody>
+                </table>
             </div>
-            <button onClick={toggleDarkMode}>
-                Toggle Dark Mode
-            </button>
         </>
     )
 }
