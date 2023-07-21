@@ -2,6 +2,10 @@
 
 This is a simple "Contacts" application built with Next.js, allowing you to browse your contacts from a provided API.
 
+Link: [ContactsApp](https://contacts-app-shzmj.vercel.app/).
+
+Uses [jsonplaceholder](https://jsonplaceholder.typicode.com/users) to add some sample contacts.
+
 ## Getting Started
 
 To run the application locally, follow these steps:
