@@ -71,8 +71,8 @@ export default function ContactDeets({ contact, handleDeleteContact, handleEditC
             <input type="checkbox" id={`contact_deets_${contact.id}`} className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box">
-                    <div className="flex items-center mb-4">
-                        <div className="mask mask-squircle w-12 h-12 mr-3">
+                    <div className="flex justify-center items-center mb-4">
+                        <div className="mask mask-squircle w-12 h-12 mr-2 ml-10">
                             <img
                                 className="rounded-full h-10 w-10"
                                 src={`https://ui-avatars.com/api/background=0077C9&color=fff?name=${contact.name}`}
@@ -88,21 +88,21 @@ export default function ContactDeets({ contact, handleDeleteContact, handleEditC
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                         <div>
-                            <label>Email: </label>
+                            <label className="text-samsungBlue">Email: </label>
                             <input
                                 type="text"
                                 className="text-lg font-bold bg-inherit"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
-                            <label>Phone: </label>
+                            <label className="text-samsungBlue">Phone: </label>
                             <input
                                 type="text"
                                 className="text-lg font-bold bg-inherit"
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                             />
-                            <label>Company name: </label>
+                            <label className="text-samsungBlue">Company name: </label>
                             <input
                                 type="text"
                                 className="text-lg font-bold bg-inherit"
@@ -111,21 +111,21 @@ export default function ContactDeets({ contact, handleDeleteContact, handleEditC
                             />
                         </div>
                         <div>
-                            <label>City: </label>
+                            <label className="text-samsungBlue">City: </label>
                             <input
                                 type="text"
                                 className="text-lg font-bold bg-inherit"
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
                             />
-                            <label>Street: </label>
+                            <label className="text-samsungBlue">Street: </label>
                             <input
                                 type="text"
                                 className="text-lg font-bold bg-inherit"
                                 value={street}
                                 onChange={(e) => setStreet(e.target.value)}
                             />
-                            <label>Company catch phrase: </label>
+                            <label className="text-samsungBlue">Company catch phrase: </label>
                             <input
                                 type="text"
                                 className="text-lg font-bold bg-inherit"
