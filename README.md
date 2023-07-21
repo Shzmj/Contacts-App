@@ -1,6 +1,6 @@
 # Contacts App
 
-This is a simple "Contacts" application built with Next.js, allowing you to browse your contacts from a provided API.
+This is a simple "Contacts" application built with Next.js, allowing you to browse your contacts from a provided API. Users can add new contacts and view/edit contact details.
 
 Link: [ContactsApp](https://contacts-app-shzmj.vercel.app/).
 
