@@ -27,7 +27,6 @@ export default function ContactDeets({ contact, handleDeleteContact, handleEditC
         if (modalCheckbox) {
             modalCheckbox.checked = false;
         }
-        handleClose();
     };
 
     const handleSave = () => {
@@ -46,11 +45,6 @@ export default function ContactDeets({ contact, handleDeleteContact, handleEditC
             },
         };
         handleEditContact(updatedContact);
-        const modalCheckbox = document.getElementById("modal-toggle");
-        if (modalCheckbox) {
-            modalCheckbox.checked = false;
-        }
-        handleClose();
     };
 
     useEffect(() => {
