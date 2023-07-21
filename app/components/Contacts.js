@@ -62,7 +62,6 @@ export default function Contacts({ search, newContact }) {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>Name</th>
                             <th>Company</th>
                             <th>Email</th>

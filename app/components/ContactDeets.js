@@ -59,8 +59,11 @@ export default function ContactDeets({ contact, handleDeleteContact, handleEditC
             city !== contact.address.city || street !== contact.address.street ||
             catchPhrase !== contact.company.catchPhrase) {
             setDetailsChanged(true);
+        } else {
+            setDetailsChanged(false);
         }
-    }, [name, email, phone, companyName, city, street, catchPhrase]);
+    }, [name, email, phone, companyName, city, street, catchPhrase, contact]);
+
 
     return (
         <>
