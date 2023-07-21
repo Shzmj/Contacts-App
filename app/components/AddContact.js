@@ -55,7 +55,7 @@ export default function AddContact({ onAddContact }) {
                                     Name:
                                     <input
                                         type="text"
-                                        className="input input-primary input-bordered"
+                                        className="input input-info input-bordered"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                         required
@@ -67,7 +67,7 @@ export default function AddContact({ onAddContact }) {
                                     Email:
                                     <input
                                         type="email"
-                                        className="input input-primary input-bordered"
+                                        className="input input-info input-bordered"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
@@ -79,7 +79,7 @@ export default function AddContact({ onAddContact }) {
                                     Phone:
                                     <input
                                         type="text"
-                                        className="input input-primary input-bordered"
+                                        className="input input-info input-bordered"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
                                         required
@@ -91,7 +91,7 @@ export default function AddContact({ onAddContact }) {
                                     Company:
                                     <input
                                         type="text"
-                                        className="input input-primary input-bordered"
+                                        className="input input-info input-bordered"
                                         value={company}
                                         onChange={(e) => setCompany(e.target.value)}
                                         required
@@ -103,7 +103,7 @@ export default function AddContact({ onAddContact }) {
                                     Catch Phrase:
                                     <input
                                         type="text"
-                                        className="input input-primary input-bordered"
+                                        className="input input-info input-bordered"
                                         value={catchPhrase}
                                         onChange={(e) => setCatchPhrase(e.target.value)}
                                         required
@@ -115,7 +115,7 @@ export default function AddContact({ onAddContact }) {
                                     City:
                                     <input
                                         type="text"
-                                        className="input input-primary input-bordered"
+                                        className="input input-info input-bordered"
                                         value={city}
                                         onChange={(e) => setCity(e.target.value)}
                                         required
@@ -127,7 +127,7 @@ export default function AddContact({ onAddContact }) {
                                     Street:
                                     <input
                                         type="text"
-                                        className="input input-primary input-bordered"
+                                        className="input input-info input-bordered"
                                         value={street}
                                         onChange={(e) => setStreet(e.target.value)}
                                         required
@@ -136,7 +136,7 @@ export default function AddContact({ onAddContact }) {
                             </div>
                         </div>
                         <div className="form-control mt-4">
-                            <button type="submit" className="btn bg-primary" htmlFor="my_modal_7">
+                            <button type="submit" className="btn btn-outline btn-info" htmlFor="my_modal_7">
                                 Add Contact
                             </button>
                         </div>
