@@ -58,7 +58,7 @@ export default function Contacts({ search, newContact }) {
 
     return (
         <>
-            <div className="md:col-span-2 overflow-x-auto">
+            <div className="md:col-span-2 overflow-x-auto mx-auto w-11/12">
                 <table className="table">
                     <thead>
                         <tr>
